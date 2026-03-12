@@ -17,7 +17,9 @@ def empirical_risk(
 
     fix this function
     """
-    return 1
+    y_pred = X * theta +b
+    error = (y_pred -y)
+    return np.mean(error**2)
 
 
 def compute_optimal_params(X: np.ndarray, y: np.ndarray) -> tuple[float, float]:
@@ -25,6 +27,13 @@ def compute_optimal_params(X: np.ndarray, y: np.ndarray) -> tuple[float, float]:
     Compute the optimal theta and b, obtained by
     gradient cancellation
     """
-    n_samples = X.shape[0]
+    x_bar = np.mean(X)
+    y_bar = np.mean(y)
 
-    return 1, 1
+    numerator = np.sum((X - x_bar)*(y - y_bar))
+    denominator = np.sum((X - x_bar)**2)
+
+    theta_star = numerator / denominator
+
+    b_star = y_bar - theta_star * x_bar
+    return theta_star, b_star

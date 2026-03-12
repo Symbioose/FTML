@@ -6,7 +6,7 @@ and plot the prediction made by this estimator.
 import os
 
 import matplotlib.pyplot as plt
-
+import numpy as np
 # from utils_solution import empirical_risk
 from constants import STD_NOISE
 from utils import compute_optimal_params, empirical_risk
@@ -49,7 +49,9 @@ def main():
     """
     Compute and plot the predictions of the linear regressor
     """
-
+    X_plot = np.linspace(X_train.min(), X_train.max(), 100)
+    y_plot = best_theta * X_plot + best_b
+    plt.plot(X_plot, y_plot, color='green', label='predictions')
     # save figure
     plt.xlabel("temperature (°C)")
     plt.ylabel("power_consumption (MW)")
