@@ -23,8 +23,10 @@ def empirical_average_loop(n_samples: int) -> float:
 def empirical_average_array(n_samples: int) -> float:
     """
     EDIT THIS FUNCTION
-    """
-    return 1
+    """ 
+    samples = np.random.uniform(1,2,n_samples)
+
+    return np.mean(samples**2)
 
 
 def main() -> None:
